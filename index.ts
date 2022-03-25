@@ -1,6 +1,7 @@
-// Import stylesheets
-import './style.css';
-
-// Write TypeScript code!
-const appDiv: HTMLElement = document.getElementById('app');
-appDiv.innerHTML = `<h1>TypeScript Starter</h1>`;
+const arrCities = [
+  { from: 'Москва', to: 'Питер' },
+  { from: 'Питер', to: 'Пермь' },
+  { from: 'Пермь', to: 'Тула' },
+  { from: 'Тула', to: 'Казань' },
+  { from: 'Казань', to: 'Новосибирск' },
+];
