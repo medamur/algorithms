@@ -26,7 +26,7 @@ function findCitiesWay(cities: any[]) {
 
 // console.log(findCitiesWay(cities));
 
-// Алшоритм Хоара
+// Алгоритм Хоара
 
 const arrNumebers: number[] =
   '24524134572524513841093840138193657143657460518734810239847'
@@ -90,4 +90,47 @@ const isPath: typeSearchGraph<boolean> = (graph, start, end) => {
   return false;
 };
 
-console.log(isPath(graph, 'a', 'f'));
+// console.log(isPath(graph, 'f', 'g'));
+
+// Функция, определяющая правильные пары скобок
+
+function braces(s: string): boolean {
+  const openBraces = ['(', '[', '{'];
+  const closeBraces = [')', ']', '}'];
+
+  const stack = [];
+  const arrBraces = s.split('');
+
+  for (let i = 0; i < arrBraces.length; i++) {
+    const openIdx = openBraces.indexOf(arrBraces[i]);
+
+    if (openIdx !== -1) {
+      stack.push(openIdx);
+
+      continue;
+    }
+
+    const closeIdx = closeBraces.indexOf(arrBraces[i]);
+
+    if (closeIdx !== -1) {
+      const lastOpenIdx = stack.pop();
+
+      if (closeIdx !== lastOpenIdx) return false;
+    }
+  }
+
+  if (stack.length !== 0) return false;
+
+  return true;
+}
+
+//Тесты:
+// console.log(braces('(){}[]') === true);
+// console.log(braces('([{}])') === true);
+// console.log(braces('(())') === true);
+// console.log(braces('({})[({})]') === true);
+
+// console.log(braces('(}') === false);
+// console.log(braces('[(])') === false);
+// console.log(braces('(})') === false);
+// console.log(braces(')(}{][') === false);
