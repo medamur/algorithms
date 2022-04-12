@@ -134,3 +134,16 @@ function braces(s: string): boolean {
 // console.log(braces('[(])') === false);
 // console.log(braces('(})') === false);
 // console.log(braces(')(}{][') === false);
+
+var rotate = function (nums: number[], k: number) {
+  k = k > nums.length ? Math.floor(k / nums.length) : k;
+
+  console.log('k: ', k);
+
+  for (let i = 0; i < k; i++) {
+    nums.unshift(nums.pop());
+  }
+
+  return nums;
+};
+// console.log(rotate([1, 2], 5));
