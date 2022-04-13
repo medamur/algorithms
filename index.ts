@@ -135,30 +135,36 @@ function braces(s: string): boolean {
 // console.log(braces('(})') === false);
 // console.log(braces(')(}{][') === false);
 
-var rotate = function (nums, k) {
+function rotate(nums: number[], k: number) {
   k = k > nums.length ? k % nums.length : k;
 
   const arr = [];
 
   for (let i = 0; i < k; i++) {
-    arr.push(nums.length - i);
+    arr.push(nums[nums.length - (k - i)]);
 
     if (k - 1 === i) {
+      console.log('nums start: ', nums);
+      console.log('arr start: ', arr);
+
       if (nums.length - k !== 0) {
         let r = 0;
-        for (let y = k + 1; y < nums.length; y++) {
-          nums[y] = nums[r++];
+
+        for (let y = nums.length - 1; k <= y; y--) {
+          nums[y] = nums[k - r++];
+
           console.log('nums: ', nums);
         }
       }
 
       for (let j = 0; j < arr.length; j++) {
         nums[j] = arr[j];
+
         console.log('arr: ', nums);
       }
     }
   }
 
   return nums;
-};
-console.log(rotate([1, 2, 3, 4, 5, 6, 7], 2));
+}
+// console.log(rotate([1, 2], 3));
