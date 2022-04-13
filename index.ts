@@ -148,11 +148,16 @@ function rotate(nums: number[], k: number) {
       console.log('arr start: ', arr);
 
       if (nums.length - k !== 0) {
-        let r = 0;
+        // for (let y = nums.length; k < y; y--) {
+        // console.log(y - k);
+        // nums[y - k] = nums[nums.length - y];
+        // console.log('nums[y]: ', nums[y - 1]);
+        // console.log('nums: ', nums);
+        // }
 
-        for (let y = nums.length - 1; k <= y; y--) {
-          nums[y] = nums[k - r++];
-
+        for (let y = k; y < nums.length; y++) {
+          nums[nums.length - (y - k)] = nums[y - k];
+          console.log(y - k);
           console.log('nums: ', nums);
         }
       }
@@ -167,4 +172,7 @@ function rotate(nums: number[], k: number) {
 
   return nums;
 }
-// console.log(rotate([1, 2], 3));
+
+// console.log(rotate([1, 2], 3).join() === '2,1');
+// console.log(rotate([1, 2, 3, 4, 5, 6, 7], 3).join() === '5,6,7,1,2,3,4');
+// console.log(rotate([-1, -100, 3, 99], 2).join() === '3,99,-1,-100');
